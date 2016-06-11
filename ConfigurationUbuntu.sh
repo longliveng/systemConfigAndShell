@@ -20,7 +20,7 @@ sudo apt-get remove apache2 &&
 sudo apt-get install nginx &&
 sudo apt-get install php5 php5-json php5-fpm php5-mysql php5-curl php5-gd php5-cli php5-common &&
 sudo mkdir /var/www &&
-udo apt-get install phpmyadmin
+sudo apt-get install phpmyadmin
 sudo ln -s /usr/share/phpmyadmin/ /var/www/phpmyadmin &&
 sudo mkdir /var/www &&
 
