@@ -14,14 +14,14 @@ RUN sed -i 's/(index  )/index  index.php /' /etc/nginx/conf.d/default.conf
 RUN sed -i '1i\daemon  off;' /etc/nginx/nginx.conf
 # RUN service nginx restart
 # RUN service nginx reload
-RUN service php5-fpm restart
-RUN service php5-fpm reload
-CMD nginx
+CMD service php5-fpm start
+# RUN service php5-fpm reload
+CMD service nginx start
 #USER nginx #todo
 
 
 EXPOSE 80 443 3306
 
 # docker build -t 'chan17_nginx_php5_dev_env' .
-# docker run -d -P -p 80:62201 -t -i --name test_nginx1 -v /vagrant/code:/usr/share/nginx/html:rw -v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf nginx /bin/bash 
-# docker run -d -P -p 80:62201 -t -i --name test_nginx1 -v /vagrant/code:/usr/share/nginx/html:rw -v chan17_nginx_php5_dev_env /bin/bash 
+# docker run -d -p 80:62201 -t -i --name test_nginx1 -v /vagrant/code:/usr/share/nginx/html:rw -v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf nginx /bin/bash 
+# docker run -d -p 62201:80 -t -i --name test_nginx2 -v /vagrant/code:/usr/share/nginx/html:rw chan17_nginx_php5_dev_env /bin/bash 
