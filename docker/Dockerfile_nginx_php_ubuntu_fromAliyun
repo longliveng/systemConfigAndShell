@@ -1,0 +1,17 @@
+FROM registry.cn-hangzhou.aliyuncs.com/nginx-ssh-php-mysql/ubuntu:latest
+MAINTAINER ccchenyihao "chenyihao17@qq.com"
+RUN apt-get update
+RUN apt-get install -f -y php5.6 php5.6-json php5.6-fpm php5.6-mysql php5.6-curl php5.6-gd php5.6-cli php5.6-common
+RUN sed -i 's/\s(sendfile.*)/ sendfile off;/' /etc/nginx/nginx.conf
+CMD service php5.6-fpm start
+CMD service nginx start
+# RUN service php5-fpm reload
+#USER nginx #todo
+
+
+EXPOSE 80 443 3306
+
+# docker build -t 'chan17_nginx_php5_dev_env' .
+
+#docker run -d -p 62201:80 -p 62202:443 -p 62203:3306 -t -i --name php_nginx3 -v /vagrant/code:/home/e registry.cn-hangzhou.aliyuncs.com/nginx-ssh-php-mysql/ubuntu sh -c 'service nginx start && service php5.6-fpm start'
+#include /home/*/*/nginx.conf;
